@@ -1,4 +1,4 @@
-package com.tobias.bodyForming;
+package com.tobias.bodyForming.repository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
