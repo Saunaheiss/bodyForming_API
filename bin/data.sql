@@ -1,3 +1,5 @@
+delete from trainer_user_photos; 
+delete from trainer_user_experience;
 delete from trainer_user;
 
 insert into trainer_user(id,first_name, last_name, email, password, personal_photo, conclusion, philosophy) values(1,'Karsten', 'Nordhausen', 'test@test.ch', 'testpw', 'http://www.aachener-zeitung.de/polopoly_fs/1.5894.1346145640!/httpImage/image.jpg_gen/derivatives/zva_quer_540/image.jpg', 'conclusion: Erfahrender Mediziner mit liebe zum Eisensport', 'Meine Philosophie ist wie jeder mag');

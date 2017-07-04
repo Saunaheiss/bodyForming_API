@@ -1,0 +1,23 @@
+package com.tobias.bodyForming.service;
+
+import java.util.List;
+
+import com.tobias.bodyForming.Domain.User;
+
+public interface UserService {
+	
+	User save( User user );
+	    
+    User findByFirstName( String firstName );
+    
+    User findById( Long id );
+    
+    List<User> findAll();
+    
+//    void updateUserById( String firstName, String lastName, Long Id );
+    
+//    User anonymousUserById( Long id );
+    
+    User findByEmail( String email );
+	    
+}
