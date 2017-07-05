@@ -3,37 +3,31 @@ package com.tobias.bodyForming.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.tobias.bodyForming.Domain.User;
-import com.tobias.bodyForming.repository.UserRepository;
+import com.tobias.bodyForming.Domain.TrainerUser;
+import com.tobias.bodyForming.repository.TrainerUserRepository;
 
 
+public class DefaultTrainerUserService implements TrainerUserService {
 
-@Transactional
-@Service
-public class DefaultUserService implements UserService {
-	
 	//field:
-    private final UserRepository userRepository;
+    private final TrainerUserRepository trainerUserRepository;
     
     @Autowired
     //constructor:
-    public DefaultUserService(UserRepository userRepository) {
-		this.userRepository = userRepository;
+    public DefaultTrainerUserService(TrainerUserRepository trainerUserRepository) {
+		this.trainerUserRepository = trainerUserRepository;
 	}
     
     //METHODS:
-    
     @Override
-    public User save( User user ) {
-        return this.userRepository.save( user );
+    public TrainerUser save( TrainerUser trainerUser ) {
+        return this.trainerUserRepository.save( trainerUser );
     }
     
     @Override
-    public User findByFirstName( String firstName ) {
-        return this.userRepository.findByFirstName( firstName );
+    public TrainerUser findByFirstName( String firstName ) {
+        return this.trainerUserRepository.findByFirstName( firstName );
     }
     
 //    @Override
@@ -42,18 +36,18 @@ public class DefaultUserService implements UserService {
 //    }
     
     @Override
-    public List<User> findAll() {
-        return this.userRepository.findAll();
+    public List<TrainerUser> findAll() {
+        return this.trainerUserRepository.findAll();
     }
     
     @Override
-    public User findById( Long id ) {
+    public TrainerUser findById( Long id ) {
 //        User user = this.userRepository.findById( id );
         
 //        if ( user == null ) {
 //            throw new UserNotFoundException( "Could not find User with ID [" + id + "]" );
 //        }
-        return this.userRepository.findById( id );
+        return this.trainerUserRepository.findById( id );
     }
     
 //    @Override
@@ -65,7 +59,8 @@ public class DefaultUserService implements UserService {
 //    }
     
     @Override
-    public User findByEmail( String email ) {
-        return this.userRepository.findByEmail( email );
+    public TrainerUser findByEmail( String email ) {
+        return this.trainerUserRepository.findByEmail( email );
     }
+
 }
