@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,27 +27,31 @@ public class Skills {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(JsonViews.Public.class)
 	private Long id;
 	
 	@ManyToMany
+	@JsonView(JsonViews.Public.class)
 	private List<TrainerUser> endorsedTrainer;
 	
 	//@OneToMany(mappedBy="jobInfo.pm") // or is this the correct one? What for jobInfo.pm?
 	// @ManyToOne(optional=false)
 	@ManyToMany
+	@JsonView(JsonViews.Public.class)
 	private List<TrainerUser> endorsments; 
 	
-	@Column(name = "type", nullable = true, length = 30)
-	private String type;
+	@Column(name = "typeskill", nullable = true, length = 30)
+	@JsonView(JsonViews.Public.class)
+	private String typeskill;
 	
 	public Skills() {
 		// JPA required :)
 	}
 
-	public Skills(List<TrainerUser> endorsedTrainer, List<TrainerUser> endorsments, String type) {
+	public Skills(List<TrainerUser> endorsedTrainer, List<TrainerUser> endorsments, String typeskill) {
 		super();
 		this.endorsedTrainer = endorsedTrainer;
 		this.endorsments = endorsments;
-		this.type = type;
+		this.typeskill = typeskill;
 	}
 }

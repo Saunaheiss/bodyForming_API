@@ -3,10 +3,14 @@ package com.tobias.bodyForming.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tobias.bodyForming.Domain.Reviews;
 import com.tobias.bodyForming.repository.ReviewsRepository;
 
+@Transactional
+@Service
 public class DefaultReviewsService implements ReviewsService {
 	
 	private final ReviewsRepository repository;

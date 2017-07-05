@@ -3,9 +3,11 @@ package com.tobias.bodyForming.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.tobias.bodyForming.Domain.Skills;
 
+@Repository
 public interface SkillsRepository extends JpaRepository<Skills, Long>{
 	 Skills findById( Long id );
 	    

@@ -3,10 +3,14 @@ package com.tobias.bodyForming.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tobias.bodyForming.Domain.Skills;
 import com.tobias.bodyForming.repository.SkillsRepository;
 
+@Transactional
+@Service
 public class DefaultSkillsService implements SkillsService {
 
 private final SkillsRepository repository;
