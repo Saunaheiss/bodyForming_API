@@ -65,5 +65,10 @@ public class DefaultTrainerUserService implements TrainerUserService {
     public TrainerUser findByEmail( String email ) {
         return this.trainerUserRepository.findByEmail( email );
     }
+    
+    @Override
+    public List <TrainerUser> findByLastNameIgnoreCaseContainingOrFirstNameIgnoreCaseContaining(  String lastName, String firstName) {
+        return this.trainerUserRepository.findByLastNameIgnoreCaseContainingOrFirstNameIgnoreCaseContaining(lastName, firstName);
+    }
 
 }

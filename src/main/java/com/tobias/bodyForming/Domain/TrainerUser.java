@@ -52,17 +52,21 @@ public class TrainerUser {
 //	@Column(nullable = false, length = 75) // NECESSARY???????????? --------------
 //	private String token;
 	
+	@JsonView(JsonViews.Public.class)
 	@Column(name = "personal_photo", nullable = true, length = 500)
 	private String personalPhoto;
 	
+	@JsonView(JsonViews.Public.class)
 	@Column(name = "conclusion", nullable = true, length = 1000)
 	private String conclusion;
 	
+	@JsonView(JsonViews.Public.class)
 	@Column(name = "philosophy", nullable = true, length = 1000)
 	private String philosophy;
 	
 	@Column
 	@ElementCollection
+	@JsonView(JsonViews.Public.class)
 	private List<String> experience;
 	
 	@ManyToMany
@@ -71,6 +75,7 @@ public class TrainerUser {
 	@OneToMany(mappedBy = "revieweD", cascade = CascadeType.ALL, orphanRemoval=true)
 	private List <Reviews> reviews;
 	
+	@JsonView(JsonViews.Public.class)
 	@Column
 	@ElementCollection
 	private List<String> photos;

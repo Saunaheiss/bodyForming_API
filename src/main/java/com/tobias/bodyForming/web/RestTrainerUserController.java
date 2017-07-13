@@ -1,11 +1,18 @@
 package com.tobias.bodyForming.web;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -31,9 +38,29 @@ public class RestTrainerUserController {
     }
     
     @GetMapping("/{id}")
-    @JsonView(JsonViews.Detail.class)
+    @JsonView(JsonViews.Public.class)
     public TrainerUser retrieveUser( @PathVariable Long id ) {
         return this.trainerUserService.findById( id );
+    }
+    
+    @JsonView(JsonViews.Public.class)
+    @RequestMapping(value = "/search", params = "query", method = GET)
+    @ResponseBody
+    public List<TrainerUser> retrieveSearchedRestaurants( @RequestParam("query") String query ) {
+        return trainerUserService.findByLastNameIgnoreCaseContainingOrFirstNameIgnoreCaseContaining(query, query);
+    }
+    
+    @PostMapping("/sign_in")
+    @JsonView(JsonViews.Public.class)
+    public TrainerUser signInTrainerUser (@RequestBody Map<String, String> credentials) {
+    	System.out.println(credentials);
+    	TrainerUser tUser = this.trainerUserService.findByEmail(credentials.get("email"));
+    	System.out.println(credentials.get("password"));
+    	System.out.println(tUser.getPassword());
+    	System.out.println(tUser.getPassword() == credentials.get("password"));
+    	if(tUser.getPassword().equals(credentials.get("password")))
+    		return tUser;
+    	else return null;
     }
     
 //    //update User anonymous

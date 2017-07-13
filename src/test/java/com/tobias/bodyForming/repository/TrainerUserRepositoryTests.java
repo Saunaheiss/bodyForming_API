@@ -11,6 +11,8 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tobias.bodyForming.Domain.TrainerUser;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
 @Transactional
@@ -29,4 +31,10 @@ public class TrainerUserRepositoryTests {
     public void findByEmail() {
         assertThat( repository.getOne(1L).getEmail() ).isEqualTo("test@test.ch");
     }
+	
+//	@Test
+//	public void findByLastNameOrFirstName() {
+//		TrainerUser bolt= repository.findById(1L);
+//		assertThat(repository.findByLastNameIgnoreCaseContainingOrFirstNameIgnoreCaseContaining("Bolt")).contains(bolt);
+//	}
 }

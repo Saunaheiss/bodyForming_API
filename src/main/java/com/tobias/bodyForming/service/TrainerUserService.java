@@ -20,4 +20,6 @@ public interface TrainerUserService {
 //    User anonymousUserById( Long id );
     
     TrainerUser findByEmail( String email );
+    
+    List<TrainerUser> findByLastNameIgnoreCaseContainingOrFirstNameIgnoreCaseContaining( String lastName, String firstName );
 }
